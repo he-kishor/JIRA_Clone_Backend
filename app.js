@@ -1,8 +1,8 @@
 require('dotenv').config();
 const express=require('express');
-const connecDB=require('./Settings/DB/dbconnect');
-//const Routes=require('./src/routes');
-const { logger } = require('./Settings/middleware/auth_token');
+const connecDB=require('./settings/DB/dbconnect');
+const Routes=require('./src/routes');
+const { logger } = require('./settings/middleware/auth_token');
 
 //app start
 const app=express();
@@ -17,7 +17,7 @@ app.get("/",(req,res)=>{
    return res.send("Welcome in authentication and authorization")
 });
 //user route
-//app.use("/api",Routes);
+app.use("/api",Routes);
 const PORT=process.env.PORT;
 
 //connect db then server will start 
