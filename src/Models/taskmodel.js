@@ -8,5 +8,5 @@ o_id:{type:String,required:true}
 
 })
 
-const Event_org = mongoose.model("Task_data",Task_dataSchema);
-module.exports = Event_org;
+const Task_model = mongoose.model("Task_data",Task_dataSchema);
+module.exports = Task_model;

@@ -4,7 +4,6 @@ const UserSchema = new mongoose.Schema({
   lname: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   pass: { type: String, required: true },
-  passwordChangedAt: { type: Date },  // Field for storing password change timestamp
   lastLoginAt: { type: Date }    // Field for storing last login timestamp
 });
 
