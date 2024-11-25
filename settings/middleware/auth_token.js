@@ -13,7 +13,7 @@ const authenticate =(req,res,next)=>{
 
         }
         req.userrole = user.role
-        req.userid=user.id;
+       
         next();
     });
 

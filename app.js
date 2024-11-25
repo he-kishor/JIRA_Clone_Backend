@@ -3,19 +3,30 @@ const express=require('express');
 const connecDB=require('./settings/DB/dbconnect');
 const Routes=require('./src/routes');
 const { logger } = require('./settings/middleware/auth_token');
+const session = require('express-session');
+const passport = require('passport');
+require('./src/Users/services/passport');
 
-//app start
-const app=express();
-
-//middleware
+const app = express();
 app.use(express.json());
 app.use(logger);
 
 
-//simple get method
-app.get("/",(req,res)=>{
-   return res.send("Welcome in authentication and authorization")
-});
+//middleware
+// Session Middleware
+app.use(
+    session({
+      resave: false,
+      saveUninitialized: false,
+      secret: 'session secret',
+    })
+  );
+  
+  // Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+  
+  // Add Custom Google Auth Routes
 //user route
 app.use("/api",Routes);
 const PORT=process.env.PORT;

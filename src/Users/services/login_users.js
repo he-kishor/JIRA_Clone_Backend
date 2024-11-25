@@ -17,13 +17,9 @@ const loginuser =async({email,pass})=>{
          throw({status:400,message:"Invalid User"})
      }
  
-     const token= jwt.sign({id:user._id,email:user.email,role:user.role}, process.env.jwtsecrettoken,{expiresIn:'4h'});
+     const token= jwt.sign({id:user._id,email:user.email}, process.env.jwtsecrettoken,{expiresIn:'4h'});
      
-     const refreshTokenn = jwt.sign(
-         { id: user._id },
-         process.env.jwtsecrettoken,
-         { expiresIn: '30d' } // Set a longer expiration for the refresh token
-     );
+    
  
      const currentdate=new Date();
      const user_up =await User.findByIdAndUpdate(
@@ -32,7 +28,7 @@ const loginuser =async({email,pass})=>{
          {
              $set:{
                  lastLoginAt:currentdate,
-                 refreshToken:refreshTokenn
+                 
              }
          },
              {new:true}
@@ -42,7 +38,7 @@ const loginuser =async({email,pass})=>{
          //response the json object to make all kind api helpful
          message:"Login Successfully",
          token,
-         refreshTokenn,
+         
          user:{
              u_id:user_up ._id,
              email:user_up .email,

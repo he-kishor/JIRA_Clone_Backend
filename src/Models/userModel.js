@@ -3,7 +3,8 @@ const UserSchema = new mongoose.Schema({
   fname: { type: String, required: true },
   lname: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  pass: { type: String, required: true },
+  pass: { type: String},
+  googleId: { type: String },
   lastLoginAt: { type: Date }    // Field for storing last login timestamp
 });
 
