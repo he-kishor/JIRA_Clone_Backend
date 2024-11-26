@@ -4,7 +4,8 @@ const User = require('../../Models/userModel');
 
 //register user
 const registerUser = async({fname, lname, email, pass})=> {
-    if (!fname || !lname || !email || !pass){
+    if (!fname || !lname || !email || !pass || !fname.trim() || !lname.trim() || !email.trim() || !pass.trim()){
+        
         throw({status:400, message:"Please provide all required fields"});
 
     }
