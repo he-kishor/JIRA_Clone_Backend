@@ -1,7 +1,7 @@
 const Task_Model = require('../../Models/taskmodel');
 
 const createtask =async(userId,{task_title, task_description})=>{
-    if (!task_title || !task_description){
+    if (!task_title?.trim() || !task_description?.trim() ){
        throw({status:400, message:"Please provide all required fields"});
     }
     
