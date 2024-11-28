@@ -14,12 +14,12 @@ app.use(logger);
 
 
 
-var corsOptions = {
-  origin: "http://localhost:3000"
-};
-
-app.use(cors(corsOptions));
-
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Replace with your frontend's URL
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  })
+);
 
 //middleware
 // Session Middleware
