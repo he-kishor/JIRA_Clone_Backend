@@ -14,18 +14,12 @@ app.use(logger);
 
 
 
+var corsOptions = {
+  origin: "http://localhost:3000"
+};
 
+app.use(cors(corsOptions));
 
-app.use(cors()); // Enable CORS for all routes by default
-
-// Alternatively, enable CORS only for specific origins
-app.use(
-    cors({
-        origin: 'http://localhost:3000', // Allow requests from this origin
-        methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
-        allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
-    })
-);
 
 //middleware
 // Session Middleware
