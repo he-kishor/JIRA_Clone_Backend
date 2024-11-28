@@ -12,7 +12,7 @@ const registerUser = async({fname, lname, email, pass})=> {
     }
     const emailfound = await User.findOne({email:email});
     if (emailfound){
-        throw({status:400,message:"This email is already register"})
+        throw({status:400,message:"This email is already registered. Please log in use a different email to sign up."})
     }
     const hasedPassword = await bcrypt.hash(pass,10);
     const newuser = await User.create({fname, lname, email, pass:hasedPassword});
