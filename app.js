@@ -6,12 +6,14 @@ const { logger } = require('./settings/middleware/auth_token');
 const session = require('express-session');
 const passport = require('passport');
 const cors = require('cors');
+const cookieParser = require("cookie-parser");
 require('./src/Users/services/passport');
 
 const app = express();
 app.use(express.json());
 app.use(logger);
 
+app.use(cookieParser()) //Midleware to parse cookies
 
 
 app.use(
