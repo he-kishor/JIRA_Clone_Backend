@@ -22,7 +22,7 @@ const login_user=async(req,res)=>{
       res.cookie("auth_token",loginresponse.token,{
         httpOnly:true, // Ensures cookie cannot be accessed via JavaScript
         secure:true, // Ensures cookie is sent only over HTTPS
-        sameSite:"trict",//Prevents CSRF by restrictingcross-site usage
+        sameSite:"Strict",//Prevents CSRF by restrictingcross-site usage
       })
       res.status(201).json(loginresponse.user);
           
