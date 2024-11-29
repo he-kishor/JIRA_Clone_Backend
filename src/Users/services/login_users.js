@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken');
 
 
 const loginuser =async({email,pass})=>{
+    if (!email.trim()|| !pass.trim()){
+        throw({status:400, message:"Please provide all fields"})
+    }
     const user = await User.findOne({email});
      if(!user){
          throw ({status:400, message:"Invalid EmailID"});
@@ -35,11 +38,12 @@ const loginuser =async({email,pass})=>{
  
          );
      return {
-         //response the json object to make all kind api helpful
-         message:"Login Successfully",
+        
+        
          token,
          
          user:{
+            message:"Login Successfully",
              u_id:user_up ._id,
              email:user_up .email,
              fname:user_up .fname,
