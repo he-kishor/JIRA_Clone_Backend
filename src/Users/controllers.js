@@ -20,9 +20,10 @@ const login_user=async(req,res)=>{
       const loginresponse = await loginuser(req.body);
       //set httponly cookie
       res.cookie("token",loginresponse.token,{
-        httpOnly:true, // Ensures cookie cannot be accessed via JavaScript
-        // secure: process.env.NODE_ENV === "production", // Ensures cookie is sent only over HTTPS
-        // sameSite:"Strict",//Prevents CSRF by restrictingcross-site usage
+        httpOnly:true,
+        secure: process.env.NODE_ENV === "production", // Only over HTTPS in production
+        sameSite: "Strict", // CSRF protection
+        path: "/", // Ensure the cookie is available for the entire site
 
       });
       

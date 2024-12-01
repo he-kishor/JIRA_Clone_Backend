@@ -3,7 +3,7 @@ const jwt=require('jsonwebtoken');
 const authenticate =(req,res,next)=>{
     //Extract toekn from httponly
     const token = req.cookies.token;
-    console.log(req);
+    console.log(req.cookies);
     
     
     if (!token) {
