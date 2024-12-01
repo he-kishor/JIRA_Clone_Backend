@@ -19,7 +19,7 @@ const login_user=async(req,res)=>{
     try{
       const loginresponse = await loginuser(req.body);
       //set httponly cookie
-      res.cookie("auth_token",loginresponse.token,{
+      res.cookie("token",loginresponse.token,{
         expires:new Date(Date.now()+14400000),
         httpOnly:true, // Ensures cookie cannot be accessed via JavaScript
         secure: process.env.NODE_ENV === "production", // Ensures cookie is sent only over HTTPS
