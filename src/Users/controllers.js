@@ -19,7 +19,7 @@ const login_user=async(req,res)=>{
     try{
       const loginresponse = await loginuser(req.body);
       //set httponly cookie
-      const maxAge = 4 * 60 * 60 * 1000;
+      const maxAge = 24 * 60 * 60 * 1000;
       console.log(loginresponse.token)
       res.cookie('authToken', loginresponse.token, {
         httpOnly: true, // Prevent client-side access
