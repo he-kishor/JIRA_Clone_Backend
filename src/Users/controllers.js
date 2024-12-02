@@ -19,13 +19,14 @@ const login_user=async(req,res)=>{
     try{
       const loginresponse = await loginuser(req.body);
       //set httponly cookie
-      res.cookie("token",loginresponse.token,{
-        httpOnly:true,
-        secure: process.env.NODE_ENV === "production", // Only over HTTPS in production
-        sameSite: "Strict", // CSRF protection
-        path: "/", // Ensure the cookie is available for the entire site
-
-      });
+      const maxAge = 4 * 60 * 60 * 1000;
+      console.log(loginresponse.token)
+      res.cookie('authToken', loginresponse.token, {
+        httpOnly: true, // Prevent client-side access
+        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+        sameSite: 'strict', // Helps prevent CSRF
+        maxAge: maxAge, // Expiration in milliseconds
+    });
       
       res.status(201).json(loginresponse.user);
           

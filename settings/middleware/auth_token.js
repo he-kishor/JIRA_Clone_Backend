@@ -2,8 +2,10 @@ require("dotenv").config()
 const jwt=require('jsonwebtoken');
 const authenticate =(req,res,next)=>{
     //Extract toekn from httponly
-    const token = req.cookies.token;
+    const token = req.cookies.authToken;
     console.log(req.signedCookies);
+    console.log(req.cookies);
+    console.log(token,"token");
     
     
     if (!token) {
