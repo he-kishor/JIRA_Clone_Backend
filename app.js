@@ -14,15 +14,25 @@ app.use(express.json());
 app.use(logger);
 
 app.use(cookieParser()) //Midleware to parse cookies
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://taskmanageapp-production.up.railway.app'
+];
 
 
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Replace with your frontend's URL
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        // Allow requests with no origin (like mobile apps or Postman) or listed origins
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
 );
-
 //middleware
 // Session Middleware
 app.use(

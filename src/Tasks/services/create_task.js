@@ -10,7 +10,7 @@ const createtask =async(userId,{task_title, task_description})=>{
         t_title:task_title,
         t_description:task_description,
         modified_time: Date.now(),
-        t_pipelineName:"Todo",
+        t_pipelineName:"todo",
         u_id:userId
     });
     return task_data
