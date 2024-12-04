@@ -38,4 +38,6 @@ const login_user=async(req,res)=>{
   
       
   };
+
+ 
 module.exports ={user_register, login_user};
