@@ -46,7 +46,9 @@ app.use(
   // Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
-  
+app.get('/',(req,res)=>{
+  res.send("Hello guys")
+})
   // Add Custom Google Auth Routes
 //user route
 app.use("/api",Routes);
