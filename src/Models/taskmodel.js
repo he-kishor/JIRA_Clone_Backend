@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Task_dataSchema = new mongoose.Schema({
 title:{type:String,required:true},
 description:{type:String,required:true},
-created_at:{type:Timestamp, required:true},
-updated_at:{type:Timestamp},
+created_at:{type:Date, required:true},
+updated_at:{type:Date},
 created_by:{type:String, required:true},
 assign_to:{type: String, required:true},
 assigned_teamid: {type:String},

@@ -7,10 +7,10 @@ const UserSchema = new mongoose.Schema({
   pass: { type: String},
   role:{type:String, enum: Object.values(Roles), default:Roles.USER},
   googleId: { type: String },
-  lastLoginAt: { type: Timestamp },  // Field for storing last login timestamp
+  lastLoginAt: { type: Date },  // Field for storing last login timestamp
   org_id: {type:String},
   team_id: {type:String},
-  created_at:{type:Timestamp},
+  created_at:{type:Date},
 
 });
 
