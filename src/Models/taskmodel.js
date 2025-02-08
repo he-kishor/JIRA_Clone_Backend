@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 const Task_dataSchema = new mongoose.Schema({
-t_title:{type:String,required:true},
-t_description:{type:String,required:true},
-modified_time:{type:Date, required:true},
-t_pipelineName:{type:String,required:true,enum: ["todo", "in progress", "done"]},
-u_id:{type:String,required:true}
+title:{type:String,required:true},
+description:{type:String,required:true},
+created_at:{type:Timestamp, required:true},
+updated_at:{type:Timestamp},
+created_by:{type:String, required:true},
+assign_to:{type: String, required:true},
+assigned_teamid: {type:String},
+project_id:{type:String},
+status:{type:String,required:true,enum: ["todo", "in progress", "done"]},
 
 })
 
