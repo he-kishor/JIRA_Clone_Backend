@@ -5,12 +5,12 @@ const UserSchema = new mongoose.Schema({
   lname: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   pass: { type: String},
-  role:{type:String, enum: Object.values(Roles), default:Roles.USER},
+  role:{type:String, enum: Object.values(Roles), default:Roles.USER, required:true},
   googleId: { type: String },
   lastLoginAt: { type: Date },  // Field for storing last login timestamp
   org_id: {type:String},
   team_id: {type:String},
-  created_at:{type:Date},
+  created_at:{type:Date, required:true},
 
 });
 
