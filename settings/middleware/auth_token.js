@@ -10,7 +10,7 @@ const authenticate =(req,res,next)=>{
 
         return res.status(401).json({message:"Access Denied: No token provided"});
         }
-
+    
     jwt.verify(token,process.env.jwtsecrettoken,(err,user)=>{
         if (err){
             return res.status(403).json({message:'Invalid or expired token'});
@@ -28,7 +28,7 @@ const authenticate =(req,res,next)=>{
 const verifyAccessToken = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1];
     if (!token) return res.status(401).json({ message: 'Access token missing' });
-
+    
     jwt.verify(token, process.env.jwtsecrettoken, (err, user) => {
         if (err) {
             return res.status(403).json({ message: 'Invalid or expired access token' });
@@ -37,7 +37,7 @@ const verifyAccessToken = (req, res, next) => {
         req.userid = user.id;  // User ID from access token
         
         next();
-    });sta
+    });
 };
 
 const logger =(req,res,next)=>{

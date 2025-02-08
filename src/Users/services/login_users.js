@@ -40,10 +40,11 @@ const loginuser =async({email,pass})=>{
      return {
         
         
-         token,
+      
          
          user:{
             message:"Login Successfully",
+             token:token,
              u_id:user_up ._id,
              email:user_up .email,
              fname:user_up .fname,

@@ -1,6 +1,7 @@
 
 const  registerUser = require('./services/register_user');
 const loginuser = require('./services/login_users');
+const update_user_info = require('./services/updateuser')
 const errorHandler = require('../../settings/error_handling/errorHandler');
 
 //user register
@@ -39,5 +40,16 @@ const login_user=async(req,res)=>{
       
   };
 
- 
-module.exports ={user_register, login_user};
+ const updateuser = async(req,res)=>{
+  try{
+    const id= req.userid;
+    const u_users = await update_user_info(id, req.body);
+    res.status(200).json({u_users});
+    }
+    catch(error){
+    
+        errorHandler(res,error);
+    }
+
+ }
+module.exports ={user_register, login_user, updateuser};
