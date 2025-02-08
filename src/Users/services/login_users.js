@@ -48,7 +48,9 @@ const loginuser =async({email,pass})=>{
              email:user_up .email,
              fname:user_up .fname,
              lname:user_up .lname,
+             role:user_up.role,
              lastLoginAt:user_up.lastLoginAt
+
              
          }
      };

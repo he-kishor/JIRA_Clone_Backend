@@ -20,7 +20,7 @@ const login_user=async(req,res)=>{
       const loginresponse = await loginuser(req.body);
       //set httponly cookie
       const maxAge = 24 * 60 * 60 * 1000;
-      console.log(loginresponse.token)
+      
       res.cookie('authToken', loginresponse.token, {
         httpOnly: true, // Prevent client-side access
         secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
@@ -28,7 +28,7 @@ const login_user=async(req,res)=>{
         maxAge: maxAge, // Expiration in milliseconds
     });
       
-      res.status(201).json(loginresponse.user);
+      res.status(200).json(loginresponse.user);
           
          
       }
